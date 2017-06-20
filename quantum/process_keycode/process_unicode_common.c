@@ -74,14 +74,20 @@ void unicode_input_start (void) {
 __attribute__((weak))
 void unicode_input_finish (void) {
   switch(input_mode) {
-    case UC_OSX:
-    case UC_WIN:
-      unregister_code(KC_LALT);
-      break;
-    case UC_LNX:
-      register_code(KC_SPC);
-      unregister_code(KC_SPC);
-      break;
+  case UC_OSX:
+  case UC_WIN:
+    unregister_code(KC_LALT);
+    break;
+  case UC_LNX:
+    register_code(KC_SPC);
+    unregister_code(KC_SPC);
+    break;
+  case UC_WINC:
+    register_code(KC_SPC);
+    unregister_code(KC_SPC);
+    register_code(KC_BSPACE);
+    unregister_code(KC_BSPACE);
+    break;
   }
 
   // reregister previously set mods

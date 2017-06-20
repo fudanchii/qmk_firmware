@@ -20,5 +20,6 @@
 #include "process_unicode_common.h"
 
 bool process_unicode(uint16_t keycode, keyrecord_t *record);
+bool process_unicode_ext(uint16_t keycode, keyrecord_t *record);
 
 #endif

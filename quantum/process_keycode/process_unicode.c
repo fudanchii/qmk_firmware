@@ -33,3 +33,15 @@ bool process_unicode(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+bool process_unicode_ext(uint16_t keycode, keyrecord_t *record) {
+  if (keycode > QK_UNICODE && record->event.pressed) {
+    if (first_flag == 0) {
+      set_unicode_input_mode(eeprom_read_byte(EECONFIG_UNICODEMODE));
+      first_flag = 1;
+    }
+    unicode_input_start();
+    register_hex(keycode);
+    unicode_input_finish();
+  }
+  return true;
+}
